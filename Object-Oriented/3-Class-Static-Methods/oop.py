@@ -4,6 +4,7 @@ class Employee:
     num_of_emps = 0
     raise_amt = 1.04
 
+    # regular methodes in a class automatically take the instance as the 1st argument : calling this SELF
     def __init__(self, first, last, pay):
         self.first = first
         self.last = last
@@ -19,6 +20,9 @@ class Employee:
         self.pay = int(self.pay * self.raise_amt)
 
     @classmethod
+    # as we receive the class as the first argument instead of instance
+    # we called that CLS
+    # it is just a function that takes another function as a parameter and returns another function
     def set_raise_amt(cls, amount):
         cls.raise_amt = amount
 
@@ -27,6 +31,8 @@ class Employee:
         first, last, pay = emp_str.split('-')
         return cls(first, last, pay)
 
+    # dont pass the instance or class, dont pass anything
+    # dont operate on the instance or the class
     @staticmethod
     def is_workday(day):
         if day.weekday() == 5 or day.weekday() == 6:
